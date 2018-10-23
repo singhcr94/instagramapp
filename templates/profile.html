@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+          body{
+      {% load static %}
+            background-image:url('{% static 'instagram.jpg' %}'); background-size: 1600px 800px;
+          }
+    </style>
+</head>
+<body>
+<h4> Welcome {{ use }}</h4>
+<img src="{{ y.profilepic.url }}" style="width: 180px;border-radius: 50%" >
+<h3> Total following</h3>
+<a href="myfollowing"> {{ following }}</a>
+<h4>Total followers</h4>
+<a href="myfollowers"> {{ followers }} </a>
+
+</body>
+</html>

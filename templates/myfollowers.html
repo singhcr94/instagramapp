@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+        <style>
+          body{
+      {% load static %}
+            background-image:url('{% static 'instagram.jpg' %}'); background-size: 1600px 800px;
+          }
+    </style>
+</head>
+<body>
+<form method="post">
+{% csrf_token %}
+<div style="margin-left: 650px;height: 425px;width:100px">
+{% for i in profile %}
+    {% if i.user.username in foll %}
+        <img src="{{ i.profilepic.url }}" style="width:100px;margin-top: 20px;border-radius: 50%" >
+<a href="{{ i.user.username }}">{{ i.user.username|linebreaks }}</a>
+    {% if i.user.username in following %}
+    <button type="submit" value="{{i}}" name="button"> UnFollow</button>
+    {% else %}
+    <button type="submit" value="{{i}}" name="button"> Follow</button>
+    {% endif %}
+    {% endif %}
+{% endfor %}
+
+</form>
+</body>
+</html>

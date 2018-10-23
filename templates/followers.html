@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+          body{
+      {% load static %}
+            background-image:url('{% static 'instagram.jpg' %}'); background-size: 1600px 800px;
+          }
+    </style>
+</head>
+<body>
+<form method="post">
+{% csrf_token %}
+ <a href="{{ x }}">{{ x|linebreaks }}</a>
+{% for i in following %}
+<a href="{{ i }}">{{ i|linebreaks }}</a>
+    {% if i in foll %}
+    <button type="submit" value="{{i}}" name="button"> UnFollow</button>
+    {% else %}
+    <button type="submit" value="{{i}}" name="button"> Follow</button>
+    {% endif %}
+{% endfor %}
+</body>
+</html>

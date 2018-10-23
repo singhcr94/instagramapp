@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hey</title>
+    <style>
+          body{
+      {% load static %}
+            background-image:url('{% static 'instagram.jpg' %}'); background-size: 1600px 800px;
+          }
+    </style>
+</head>
+<body>
+<div style="margin-left: 650px">
+<img src="{{ p.profilepic.url }}" style="width:50px;margin-top: 20px;border-radius: 50%; height: 50px" >
+<h1 style="font-size: 20px">{{ user }} </h1>
+<div style="margin-top: 20px">
+<form method="post">
+<h3><a href="/topprofile" name="topprofile" > PROFILE</a></h3>
+{% csrf_token %}
+<div style="height: 450px;width:100px">
+    {% for i in y %}
+<img src="{{ i.profilepic.url }}"  style="width:60px;border-radius: 60%">
+<h3 style="color:black"><a href="{{ i.user.username }}" > {{ i.user.username |linebreaks }}</a> </h3>
+    {% if i.user.username in foll %}
+    <button type="submit" value="{{i}}" name="button"> UnFollow</button>
+    {% else %}
+    <button type="submit" value="{{i}}" name="button"> Follow</button>
+    {% endif %}
+{% endfor %}
+</div>
+</form>
+<form action="http://127.0.0.1:8000/logout/" method="post">
+
+    <button type="submit"> logout</button>
+</form>
+</div>
+</div>
+</body>
+</html>
