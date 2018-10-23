@@ -25,7 +25,7 @@ SECRET_KEY = 'fjom12t_=&guo^u81-8+cs4+tp-r8!70u=-t^6f%6o(m0ouj%u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["54.213.105.51",""]
+ALLOWED_HOSTS = ["54.213.105.51","*"]
 
 
 # Application definition
